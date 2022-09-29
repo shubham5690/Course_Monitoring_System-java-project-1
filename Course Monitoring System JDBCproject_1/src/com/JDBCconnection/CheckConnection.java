@@ -4,7 +4,7 @@ import java.sql.Connection;
 
 public class CheckConnection {
 	public static void main(String[] args) {
-		Connection connection=BuildConnection.buildConnection();
+		Connection connection=BuildConn.buildConnection();
 		System.out.println(connection);
 	}
 }
