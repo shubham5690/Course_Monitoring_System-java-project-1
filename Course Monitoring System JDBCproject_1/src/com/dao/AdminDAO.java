@@ -13,4 +13,6 @@ public interface AdminDAO {
 	public String AllocateBatch(Batch batch);
 	public String AllocateFaculty(Faculty faculty);
 	
+//	public void generateReport(String batchid,String cname,int fid,int nstudent,String bsd,String du,String fname,String mobile);
+	public void generateReport();
 }

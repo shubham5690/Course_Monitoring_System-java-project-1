@@ -4,42 +4,20 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.BeanClass.Admin;
 import com.BeanClass.Faculty;
 import com.JDBCconnection.BuildConn;
 import com.exception.AdminException;
 import com.exception.FacultyException;
+import com.masai.bean.StudentDTO;
+import com.masai.exceptions.CourseException;
+import com.masai.utility.DBUtil;
 
 public class FacultyDAOimpl implements FacultyDAO{
 
-//	@Override
-//	public String facultyRegistration(Faculty faculty) {
-//		String message="data not inserted...";
-//		try(Connection connection=BuildConn.provideConnection()) {
-//			PreparedStatement ps=connection.prepareStatement
-//					 ("insert into Faculty(facultyname,facultyaddress,mobile,email,username,password) values(?,?,?,?,?,?)");
-//			 
-//			 ps.setString(1, faculty.getFacultyname());
-//			 ps.setString(2, faculty.getFacultyaddress());
-//			 ps.setString(3, faculty.getMobile());
-//			 ps.setString(4, faculty.getEmail());
-//			 ps.setString(5, faculty.getUsername());
-//			 ps.setString(6, faculty.getPassword());
-//		 
-//			int x= ps.executeUpdate();
-//			if(x>0) {
-//				message="registration succesfully";
-//			}
-//			
-//		} catch (SQLException e) {
-//			// TODO: handle exception
-//			message=e.getMessage();
-//		}
-//		
-//		return message;
-//		
-//	}
 
 	@Override
 	public Faculty facultyLogin(String username, String password) throws FacultyException {
@@ -76,6 +54,64 @@ public class FacultyDAOimpl implements FacultyDAO{
 		 
 		 return flogin;
 		
+	}
+
+	@Override
+	public String getFacultydata(String username,String password) {
+		String message="data not found for this username";
+		
+		
+		
+		try (Connection conn = BuildConn.provideConnection()){
+			
+			PreparedStatement ps= conn.prepareStatement("select * from faculty where username=? and password=?");
+			
+			ps.setString(1, username);
+			ps.setString(2, password);
+			
+			ResultSet rs= ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				int fid= rs.getInt("facultyid");
+				String fn= rs.getString("facultyname");
+				String fa= rs.getString("facultyaddress");
+				
+				String m= rs.getString("mobile");
+				String e= rs.getString("email");
+				String un= rs.getString("username");
+				String p= rs.getString("password");
+				
+				System.out.println("facultyid ="+fid);
+				System.out.println("facultyname ="+fn);
+				System.out.println("facultyaddress ="+fa);
+				System.out.println("mobile ="+m);
+				System.out.println("email ="+e);
+				System.out.println("username ="+un);
+				System.out.println("password ="+p);
+				
+				System.out.println("=============================");
+				
+				message="here is the data";
+				
+				
+				
+			}
+			
+			
+			
+			
+			
+			
+		}catch (SQLException e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		
+		
+		
+		
+		return message;
 	}
 
 	

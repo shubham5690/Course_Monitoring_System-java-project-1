@@ -142,7 +142,7 @@ public class AdminDAOimpl implements AdminDAO{
 			 ps.setInt(3, batch.getFacultyid());
 			 
 			 ps.setInt(4, batch.getNoOfStudent());
-			 ps.setDate(5,batch.getBatchStartDate());
+			 ps.setString(5, batch.getBatchStartDate());
 			 ps.setString(6, batch.getDuration());
 			 
 		 
@@ -157,6 +157,61 @@ public class AdminDAOimpl implements AdminDAO{
 		}
 		
 		return message;
+		
+	}
+
+	@Override
+	public void generateReport() {
+try (Connection conn = BuildConn.provideConnection()){
+			
+			PreparedStatement ps= conn.prepareStatement
+					("select c.coursename,b.batchid,b.facultyid,b.noofstudent,b.batchstartdate,b.duration,f.facultyname,f.mobile from course\r\n"
+							+ "c inner join batch b inner join faculty f on c.courseid=b.courseid or b.facultyid=f.facultyid;");
+			
+			
+			
+			ResultSet rs= ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				String ca= rs.getString("coursename");
+				int bid=rs.getInt("batchid");
+				int fd=rs.getInt("facultyid");
+				String fn= rs.getString("facultyname");
+				String m= rs.getString("mobile");
+				int nos=rs.getInt("noofstudent");
+				String b= rs.getString("batchstartdate");
+				String bd= rs.getString("duration");
+				
+				
+				
+				System.out.println("course name ="+ca);
+				System.out.println("batchid ="+bid);
+				System.out.println("facultyID ="+fd);
+				System.out.println("faculty name ="+fn);
+				System.out.println("mobile ="+m);
+				System.out.println("no. of student="+nos);
+				System.out.println("batch start date ="+b);
+				System.out.println("batch duration ="+bd);
+				
+				System.out.println("=============================");
+				
+				
+				
+				
+				
+			}
+			
+			
+			
+			
+			
+			
+		}catch (SQLException e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		
 		
 	}
 

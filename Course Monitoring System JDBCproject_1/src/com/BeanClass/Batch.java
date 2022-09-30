@@ -1,19 +1,19 @@
 package com.BeanClass;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Batch {
 	private int batchid;
 	private int courseid;
 	private int facultyid;
 	private int noOfStudent;
-	private Date batchStartDate;
+	private String batchStartDate;
 	private String duration;
 	public Batch() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Batch(int batchid, int courseid, int facultyid, int noOfStudent, Date batchStartDate, String duration) {
+	public Batch(int batchid, int courseid, int facultyid, int noOfStudent, String batchStartDate, String duration) {
 		super();
 		this.batchid = batchid;
 		this.courseid = courseid;
@@ -46,10 +46,10 @@ public class Batch {
 	public void setNoOfStudent(int noOfStudent) {
 		this.noOfStudent = noOfStudent;
 	}
-	public Date getBatchStartDate() {
+	public String getBatchStartDate() {
 		return batchStartDate;
 	}
-	public void setBatchStartDate(Date batchStartDate) {
+	public void setBatchStartDate(String batchStartDate) {
 		this.batchStartDate = batchStartDate;
 	}
 	public String getDuration() {
