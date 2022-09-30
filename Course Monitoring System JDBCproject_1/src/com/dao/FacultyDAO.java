@@ -7,6 +7,6 @@ import com.exception.FacultyException;
 
 public interface FacultyDAO {
 
-	public String facultyRegistration(Faculty faculty);
+//	public String facultyRegistration(Faculty faculty);
 	public Faculty facultyLogin(String username,String password) throws FacultyException;
 }

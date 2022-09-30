@@ -13,33 +13,33 @@ import com.exception.FacultyException;
 
 public class FacultyDAOimpl implements FacultyDAO{
 
-	@Override
-	public String facultyRegistration(Faculty faculty) {
-		String message="data not inserted...";
-		try(Connection connection=BuildConn.provideConnection()) {
-			PreparedStatement ps=connection.prepareStatement
-					 ("insert into Faculty(facultyname,facultyaddress,mobile,email,username,password) values(?,?,?,?,?,?)");
-			 
-			 ps.setString(1, faculty.getFacultyname());
-			 ps.setString(2, faculty.getFacultyaddress());
-			 ps.setString(3, faculty.getMobile());
-			 ps.setString(4, faculty.getEmail());
-			 ps.setString(5, faculty.getUsername());
-			 ps.setString(6, faculty.getPassword());
-		 
-			int x= ps.executeUpdate();
-			if(x>0) {
-				message="registration succesfully";
-			}
-			
-		} catch (SQLException e) {
-			// TODO: handle exception
-			message=e.getMessage();
-		}
-		
-		return message;
-		
-	}
+//	@Override
+//	public String facultyRegistration(Faculty faculty) {
+//		String message="data not inserted...";
+//		try(Connection connection=BuildConn.provideConnection()) {
+//			PreparedStatement ps=connection.prepareStatement
+//					 ("insert into Faculty(facultyname,facultyaddress,mobile,email,username,password) values(?,?,?,?,?,?)");
+//			 
+//			 ps.setString(1, faculty.getFacultyname());
+//			 ps.setString(2, faculty.getFacultyaddress());
+//			 ps.setString(3, faculty.getMobile());
+//			 ps.setString(4, faculty.getEmail());
+//			 ps.setString(5, faculty.getUsername());
+//			 ps.setString(6, faculty.getPassword());
+//		 
+//			int x= ps.executeUpdate();
+//			if(x>0) {
+//				message="registration succesfully";
+//			}
+//			
+//		} catch (SQLException e) {
+//			// TODO: handle exception
+//			message=e.getMessage();
+//		}
+//		
+//		return message;
+//		
+//	}
 
 	@Override
 	public Faculty facultyLogin(String username, String password) throws FacultyException {

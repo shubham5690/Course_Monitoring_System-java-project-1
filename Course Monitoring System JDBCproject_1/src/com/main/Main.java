@@ -3,6 +3,7 @@ package com.main;
 import java.util.Scanner;
 
 import com.BeanClass.Admin;
+import com.BeanClass.Course;
 import com.BeanClass.Faculty;
 import com.dao.AdminDAO;
 import com.dao.AdminDAOimpl;
@@ -43,9 +44,27 @@ public class Main {
 				
 			}
 			
-			break;
+			
 		}
 		case 2:{
+			System.out.println("-----Welcome to Course ----"+"\n");
+			System.out.println("create courseID :");
+			int ci=input.nextInt();
+			System.out.println("create course name :");
+			String cn=input.next();
+			System.out.println("set fee :");
+			int f=input.nextInt();
+			System.out.println("create course discription in less than 30 char :");
+			String cd=input.next();
+			AdminDAO course=new AdminDAOimpl();
+			
+			System.out.println(course.AllocateCourse(new Course(ci,cn,f,cd)));
+			
+			
+			
+			break;
+		}
+		case 4:{
 			System.out.println("Create username :");
 			String username=input.next();
 			System.out.println("Create password :");
@@ -56,7 +75,7 @@ public class Main {
 			break;
 			
 		}
-		case 3:{
+		case 5:{
 			
 			System.out.println("Create facultyName :");
 			String fname=input.next();
@@ -74,12 +93,12 @@ public class Main {
 			
 //			System.out.println(
 //					faculty.facultyRegistration( fname,faddress,mobile,email,username,password));
-			System.out.println(
-					faculty.facultyRegistration(new Faculty(0,fname,faddress,mobile,email,username,password)));
-			break;
+//			System.out.println(
+//					faculty.facultyRegistration(new Faculty(0,fname,faddress,mobile,email,username,password)));
+//			break;
 			
 		}
-		case 4:{
+		case 6:{
 			System.out.println("Enter username :");
 			String username=input.next();
 			System.out.println("Enter password :");
