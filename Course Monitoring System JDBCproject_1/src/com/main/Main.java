@@ -68,13 +68,13 @@ public class Main {
 				case 1: {
 					System.out.println("-----Welcome to Course ----"+"\n");
 					System.out.println("create courseID :");
-					int ci=input.nextInt();
+					int ci=sc.nextInt();
 					System.out.println("create course name :");
-					String cn=input.next();
+					String cn=sc.next();
 					System.out.println("set fee :");
-					int f=input.nextInt();
+					int f=sc.nextInt();
 					System.out.println("create course discription in less than 30 char :");
-					String cd=input.next();
+					String cd=sc.next();
 					AdminDAO course=new AdminDAOimpl();
 					System.out.println(course.AllocateCourse(new Course(ci,cn,f,cd)));
 					System.out.println("data inserted successfully");
@@ -84,19 +84,19 @@ public class Main {
 					
 					System.out.println("-----Welcome to batches ----"+"\n");
 					System.out.println("create batchID :");
-					int bi=input.nextInt();
+					int bi=sc.nextInt();
 					System.out.println("enter course id that created in course :");
-					int ci=input.nextInt();
+					int ci=sc.nextInt();
 					System.out.println("create faculty ID :");
-					int f=input.nextInt();
+					int f=sc.nextInt();
 					System.out.println("no. of student enrolled in a batch :");
-					int ns=input.nextInt();
+					int ns=sc.nextInt();
 					System.out.println("set batch start date format in yyyy-MM-dd :");
-					String date=input.next();
+					String date=sc.next();
 //					
 					
 					System.out.println("set duration of course :");
-					String d=input.next();
+					String d=sc.next();
 					AdminDAO batch=new AdminDAOimpl();
 					
 					System.out.println(batch.AllocateBatch(new Batch(bi,ci,f,ns,date,d)));
@@ -107,19 +107,19 @@ public class Main {
 				case 3:{
 					System.out.println("---allocate id  to the faculty according to courses and baches--");
 					System.out.println("give authentic faculty id from batches :");
-					int fid=input.nextInt();
+					int fid=sc.nextInt();
 					System.out.println("enter facultyName :");
-					String fname=input.next();
+					String fname=sc.next();
 					System.out.println("enter facultyAddress :");
-					String faddress=input.next();
+					String faddress=sc.next();
 					System.out.println("enter mobile :");
-					String mobile=input.next();
+					String mobile=sc.next();
 					System.out.println("enter email :");
-					String email=input.next();
+					String email=sc.next();
 					System.out.println("Create username :");
-					String name=input.next();
+					String name=sc.next();
 					System.out.println("Create password :");
-					String pass=input.next();
+					String pass=sc.next();
 					AdminDAO faculty=new AdminDAOimpl();
 					
 					faculty.AllocateFaculty(new Faculty(fid, fname,faddress,mobile,email,name,pass));
